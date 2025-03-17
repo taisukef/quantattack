@@ -46,11 +46,11 @@ https://qniapp.github.io/quantattack/
 
 ### test
 
-- [pset](https://code4fukui.github.io/quantattack/test/pset.html)
-- [line](https://code4fukui.github.io/quantattack/test/line.html)
-- [print](https://code4fukui.github.io/quantattack/test/print.html)
-- [plasma](https://code4fukui.github.io/quantattack/test/plasma.html)
-- [title](https://code4fukui.github.io/quantattack/test/title.html)
+- [pset](https://taisukef.github.io/quantattack/test/pset.html)
+- [line](https://taisukef.github.io/quantattack/test/line.html)
+- [print](https://taisukef.github.io/quantattack/test/print.html)
+- [plasma](https://taisukef.github.io/quantattack/test/plasma.html)
+- [title](https://taisukef.github.io/quantattack/test/title.html)
 
 ### lua memo
 

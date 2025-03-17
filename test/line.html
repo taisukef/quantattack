@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+</head><body>
+<script type="module">
+import { color, line, rnd, sin, cos } from "../src/p8/p8.js";
+
+color(7)
+for (let x = 1; x <= 20; x++) {
+  line(rnd(128), rnd(128), rnd(128), rnd(128));
+}
+
+// draw a red diamond shape using separate line segments
+line(63, 0, 126, 63, 8);  // this first line sets color to 8/red
+line(126, 63, 63, 126);   // no need to set color again
+line(63, 126, 0, 63);
+line(0, 63, 63, 0);
+
+// draw the same red diamond shape using line continuation
+line(63, 0, 126, 63, 8);
+line(63, 126);
+line(0, 63);
+line(63, 0);
+
+// draw a regular n-gon using line continuation
+const ngon = (x, y, r, n, color) => {
+  line(color);            // invalidate current endpoint, set color
+  for (let i = 0; i <= n; i++) {
+    const angle = i / n;
+    line(x + r * cos(angle), y + r * sin(angle));
+  }
+}
+ngon(64, 64, 50, 8, 12);  // a blue octagon
+
+</script>
+</body></html>
+

@@ -198,13 +198,14 @@ export const sfx = (n) => {
 
 const pressed = [];
 document.body.onkeydown = (e) => {
+  //console.log(e.key);
   if (e.key == "ArrowLeft") {
     pressed[0] = true;
   } else if (e.key == "ArrowRight") {
     pressed[1] = true;
-  } else if (e.key == "C") {
+  } else if (e.key == "c") {
     pressed[4] = true;
-  } else if (e.key == "X") {
+  } else if (e.key == "x") {
     pressed[5] = true;
   }
 };

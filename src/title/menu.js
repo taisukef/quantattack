@@ -62,17 +62,18 @@ export class Menu {
     } else if (btnp(5)) { // x
       sfx(15);
 
-      /*
-      local selected_menu_item = _items[_active_item_index]
-      if selected_menu_item.target_state then
-        stale = true
-        return selected_menu_item.target_state
-      else
+      const selected_menu_item = this.items[this.active_item_index];
+      if (selected_menu_item.target_state) {
+        this.stale = true;
+        return selected_menu_item.target_state;
+      } else {
+        console.log("cart to load:", selected_menu_item.target_cart);
+        /*
         cart_to_load = selected_menu_item.target_cart
         cart_load_param = selected_menu_item.cart_load_param
         cart_load_delay = 30
-      end
-      */
+        */
+      }
     } else if (btnp(4)) { // c
       sfx(8);
 

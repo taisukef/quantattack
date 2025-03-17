@@ -1,5 +1,25 @@
 # QuantAttack
 
+## js ver (under construction)
+
+### original on web
+
+https://qniapp.github.io/quantattack/
+
+### test
+
+- [pset](https://taisukef.github.io/quantattack/test/pset.html)
+- [line](https://taisukef.github.io/quantattack/test/line.html)
+- [print](https://taisukef.github.io/quantattack/test/print.html)
+- [plasma](https://taisukef.github.io/quantattack/test/plasma.html)
+- [title](https://taisukef.github.io/quantattack/test/title.html)
+
+### lua memo
+
+- 配列は1から始まる
+- ~= が !=
+- flg and 1 or -1 が flg ? 1 : -1
+
 ## lua version
 
 ### how to build
@@ -37,23 +57,3 @@ PICO-8.app/Contents/MacOS/pico8 quantattack/v0.7.5_release/quantattack_vs_human.
 ### test
 
 ```rake test``` → NG
-
-## js ver (under construction)
-
-### original on web
-
-https://qniapp.github.io/quantattack/
-
-### test
-
-- [pset](https://taisukef.github.io/quantattack/test/pset.html)
-- [line](https://taisukef.github.io/quantattack/test/line.html)
-- [print](https://taisukef.github.io/quantattack/test/print.html)
-- [plasma](https://taisukef.github.io/quantattack/test/plasma.html)
-- [title](https://taisukef.github.io/quantattack/test/title.html)
-
-### lua memo
-
-- 配列は1から始まる
-- ~= が !=
-- flg and 1 or -1 が flg ? 1 : -1

@@ -33,7 +33,6 @@ https://qniapp.github.io/quantattack/
 ```
 # for Mac
 brew install lua luarocks
- luarocks
 ```
 6. Install busted (for Mac)
 ```

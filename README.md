@@ -17,8 +17,9 @@ https://qniapp.github.io/quantattack/
 ### lua memo
 
 - 配列は1から始まる
-- ~= が !=
-- flg and 1 or -1 が flg ? 1 : -1
+- ~= は !=
+- flg and 1 or -1 は flg ? 1 : -1
+- #particles.all は particles.all.length
 
 ## lua version
 

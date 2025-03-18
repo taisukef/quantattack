@@ -12,6 +12,7 @@ https://qniapp.github.io/quantattack/
 - [line](https://taisukef.github.io/quantattack/test/line.html)
 - [print](https://taisukef.github.io/quantattack/test/print.html)
 - [plasma](https://taisukef.github.io/quantattack/test/plasma.html)
+- [effects](https://taisukef.github.io/quantattack/test/effects.html)
 - [title](https://taisukef.github.io/quantattack/test/title.html)
 
 ### lua memo

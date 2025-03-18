@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+</head><body>
+<script type="module">
+import { cls, rnd, ceil_rnd } from "../src/p8/p8.js";
+import { Bubbles } from "../src/lib/effects.js";
+
+const bubbles = new Bubbles();
+
+setInterval(() => {
+  if (rnd(1) < 0.2) {
+    const mode = ceil_rnd(2) == 1 ? "combo" : "chain";
+    const count = mode == "combo" ? ceil_rnd(9) : ceil_rnd(99);
+    const coord = [ceil_rnd(128), ceil_rnd(128)];
+    bubbles.create(mode, count, coord);
+  }
+  bubbles.update_all();
+  cls();
+  bubbles.render_all();
+}, 1000 / 30);
+
+</script>
+</body></html>

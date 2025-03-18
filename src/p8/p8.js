@@ -2,14 +2,17 @@ import { palette } from "./palette.js";
 import { font } from "./font.js";
 
 export const flr = (n) => Math.floor(n);
-
+export const ceil = (n) => Math.ceil(n);
 export const rnd = (n) => Math.random() * n;
+export const ceil_rnd = (n) => ceil(rnd(n));
 export const max = (n, m) => Math.max(n, m);
 export const min = (n, m) => Math.min(n, m);
+export const sqrt = (n) => Math.sqrt(n);
 
 const PI2 = Math.PI * 2;
 export const sin = (n) => Math.sin(n * PI2);
 export const cos = (n) => Math.cos(n * PI2);
+export const atan2 = (y, x) => Math.atan2(y, x) / PI2;
 
 const canvas = document.createElement("canvas");
 document.body.style.margin = 0;
@@ -22,7 +25,7 @@ canvas.style.height = "100vw";
 const g = canvas.getContext("2d");
 const dot = 10; // w / 128;
 
-let spr = null;
+let sprite = null;
 let music = null;
 const loadData = async () => {
   const data = await (await fetch("../data.p8")).text();
@@ -46,7 +49,7 @@ const loadData = async () => {
       }
     }
   }
-  spr = s1;
+  sprite = s1;
 };
 await loadData();
 
@@ -63,7 +66,24 @@ export const sspr = (x, y, w, h, dx, dy) => {
   dx = toi(dx);
   dy = toi(dy);
   for (let i = 0; i < h; i++) {
-    const buf = spr[y + i];
+    const buf = sprite[y + i];
+    for (let j = 0; j < w; j++) {
+      const c = buf[x + j];
+      if (c) pset(dx + j, dy + i, buf[x + j]);
+    }
+  }
+};
+
+export const spr = (n, dx, dy, w, h) => {
+  n = toi(n);
+  const x = n * w;
+  const y = 0;
+  w = toi(w);
+  h = toi(h);
+  dx = toi(dx);
+  dy = toi(dy);
+  for (let i = 0; i < h; i++) {
+    const buf = sprite[y + i];
     for (let j = 0; j < w; j++) {
       const c = buf[x + j];
       if (c) pset(dx + j, dy + i, buf[x + j]);
@@ -93,12 +113,28 @@ export const pset = (x, y, c = currentcolor) => {
   currentcolor = c;
 };
 
+let pattern = 0;
+let pattern_trans = false;
+export const fillp = (n = 0) => {
+  pattern_trans = (n % 1) >= 0.5;
+  pattern = n >> 0;
+};
+const matchPattern = (x, y) => {
+  // todo: use pattern_trans
+  const n = (x & 3) + (y & 3) * 4;
+  return (pattern & (1 << n)) == 0;
+};
+
 export const rectfill = (x0, y0, x1, y1, col = currentcolor) => {
   const w = x1 - x0 + 1;
   const h = y1 - y0 + 1;
   for (let i = 0; i < h; i++) {
     for (let j = 0; j < w; j++) {
-      pset(x0 + j, y0 + i, col);
+      const x = x0 + j;
+      const y = y0 + i;
+      if (!pattern || matchPattern(x, y)) {
+        pset(x, y, col);
+      }
     }
   }
 };
@@ -143,8 +179,28 @@ export const line = (x0, y0, x1, y1, color = currentcolor) => {
   }
 };
 
+export const circfill = (ox, oy, r, col = currentcolor) => {
+  for (let i = -r; i <= r; i++) {
+    for (let j = -r; j <= r; j++) {
+      if (i * i + j * j < r * r) {
+        const x = ox + j;
+        const y = oy + i;
+        if (!pattern || matchPattern(x, y)) {
+          pset(x, y, col);
+        }
+      }
+    }
+  }
+};
+
 let tx = 1;
 let ty = 1;
+
+export const cursor = (x, y, color) => {
+  tx = x;
+  ty = y;
+  currentcolor = color;
+}
 
 const putchar = (ch, x, y, color) => {
   if (y === undefined) {
@@ -179,6 +235,9 @@ export const print = (text, x, y, color = currentcolor) => {
   } else {
     tx = x;
     ty = y;
+  }
+  if (typeof text != "string") {
+    text = text.toString();
   }
   for (const c of text) {
     putchar(c, color);
@@ -216,4 +275,8 @@ export const btnp = (n) => {
     return true;
   }
   return false;
+};
+
+export const t = () => {
+  return performance.now() / 1000;
 };

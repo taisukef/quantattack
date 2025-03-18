@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+</head><body>
+<script type="module">
+import { cls } from "../src/p8/p8.js";
+import { Sash } from "../src/lib/effects.js";
+
+const sash = new Sash();
+
+sash.create("time up!,13,7", () => {
+  sash.create("high score!,7,8");
+});
+
+setInterval(() => {
+  sash.update_all();
+  cls();
+  sash.render_all();
+}, 1000 / 30);
+
+</script>
+</body></html>
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+</head><body>
+<script type="module">
+import { cls, rnd } from "../src/p8/p8.js";
+import { Particles } from "../src/lib/effects.js";
+
+const particles = new Particles();
+
+setInterval(() => {
+  if (rnd(1) < .2) {
+    const x = rnd(128);
+    const y = rnd(128);
+    particles.create([x, y], "5,5,9,7,,,-0.03,-0.03,20|5,5,9,7,,,-0.03,-0.03,20|4,4,9,7,,,-0.03,-0.03,20|4,4,2,5,,,-0.03,-0.03,20|4,4,6,7,,,-0.03,-0.03,20|2,2,9,7,,,-0.03,-0.03,20|2,2,9,7,,,-0.03,-0.03,20|2,2,6,5,,,-0.03,-0.03,20|2,2,6,5,,,-0.03,-0.03,20|0,0,2,5,,,-0.03,-0.03,20");
+  }
+  particles.update_all();
+  cls();
+  particles.render_all();
+}, 1000 / 30);
+
+</script>
+</body></html>

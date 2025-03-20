@@ -1,5 +1,6 @@
 import { palette } from "./palette.js";
 import { font } from "./font.js";
+import { initFilterCRT } from "https://code4fukui.github.io/crt-filter/initFilterCRT.js";
 
 export const flr = (n) => Math.floor(n);
 export const ceil = (n) => Math.ceil(n);
@@ -17,6 +18,7 @@ export const atan2 = (y, x) => Math.atan2(y, x) / PI2;
 const canvas = document.createElement("canvas");
 document.body.style.margin = 0;
 document.body.appendChild(canvas);
+initFilterCRT(canvas);
 const w = 1280;
 canvas.width = w;
 canvas.height = w;
